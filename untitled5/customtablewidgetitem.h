@@ -11,4 +11,4 @@ public:
     bool operator<(const QTableWidgetItem &other) const override;
 };
 
-#endif // CUSTOMTABLEWIDGETITEM_H
+#endif 
