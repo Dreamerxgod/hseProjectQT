@@ -70,4 +70,4 @@ struct player
     double per;
 };
 
-#endif // MAINWINDOW_H
+#endif 
