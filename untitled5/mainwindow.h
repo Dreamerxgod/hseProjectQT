@@ -43,8 +43,6 @@ private:
     void sortData(int column);  // Add this line
 };
 
-//        "Player Name", "Salary", "Position", "Age", "Team", "Games Played", "Games Started","Min/Game", "FG", "FGA", "3P", "3PA",
-//"2P", "2PA", "ORB", "DRB", "AST", "STL", "BLK", "PF", "PTS", "Total minutes", "PER",
 struct player
 {
     QString name;
