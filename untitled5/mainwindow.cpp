@@ -13,14 +13,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     tableWidget = new QTableWidget(this);
     setCentralWidget(tableWidget);
-    tableWidget->setColumnCount(52); // Adjust columns based on your CSV
+    tableWidget->setColumnCount(23); // Adjust columns based on your CSV
     tableWidget->setHorizontalHeaderLabels({
-        "Player Name", "Salary", "Position", "Age", "Team", "GP", "GS",
-        "MP", "FG", "FGA", "FG%", "3P", "3PA", "3P%", "2P", "2PA", "2P%", "eFG%",
-        "FT", "FTA", "FT%", "ORB", "DRB", "TRB", "AST", "STL", "BLK", "TOV",
-        "PF", "PTS", "Total minutes", "PER", "TS%", "3PAr", "FTr", "ORB%", "DRB%", "TRB%", "AST%",
-        "STL%", "BLK%", "TOV%", "USG%", "OWS", "DWS", "WS", "WS/48", "OBPM", "DBPM",
-        "BPM", "VORP"
+        "Player Name", "Salary", "Position", "Age", "Team", "Games Played", "Games Started","Min/Game", "FG", "FGA", "3P", "3PA",
+        "2P", "2PA", "ORB", "DRB", "AST", "STL", "BLK", "PF", "PTS", "Total minutes", "PER",
     });
 
     toolBar = new QToolBar(this);
@@ -83,12 +79,8 @@ void MainWindow::writeCSV(const QString &filename) {
 
 void MainWindow::addPlayer() {
     QStringList labels = {
-        "Player Name", "Salary", "Position", "Age", "Team", "GP", "GS",
-        "MP", "FG", "FGA", "FG%", "3P", "3PA", "3P%", "2P", "2PA", "2P%", "eFG%",
-        "FT", "FTA", "FT%", "ORB", "DRB", "TRB", "AST", "STL", "BLK", "TOV",
-        "PF", "PTS", "Total minutes", "PER", "TS%", "3PAr", "FTr", "ORB%", "DRB%", "TRB%", "AST%",
-        "STL%", "BLK%", "TOV%", "USG%", "OWS", "DWS", "WS", "WS/48", "OBPM", "DBPM",
-        "BPM", "VORP"
+        "Player Name", "Salary", "Position", "Age", "Team", "Games Played", "Games Started","Min/Game", "FG", "FGA", "3P", "3PA",
+        "2P", "2PA", "ORB", "DRB", "AST", "STL", "BLK", "PF", "PTS", "Total minutes", "PER",
     };
 
     int row = tableWidget->rowCount();
