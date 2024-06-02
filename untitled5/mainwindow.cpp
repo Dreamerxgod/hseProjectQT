@@ -47,6 +47,7 @@ MainWindow::~MainWindow() {
     delete ui;
 }
 
+
 void MainWindow::readCSV(const QString &filename) {
     QFile file(filename);
     if (file.open(QIODevice::ReadOnly)) {
