@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     tableWidget = new QTableWidget(this);
     setCentralWidget(tableWidget);
-    tableWidget->setColumnCount(23); // Adjust columns based on your CSV
+    tableWidget->setColumnCount(23);
     tableWidget->setHorizontalHeaderLabels({
         "Player Name", "Salary", "Position", "Age", "Team", "Games Played", "Games Started","Min/Game", "FG", "FGA", "3P", "3PA",
         "2P", "2PA", "ORB", "DRB", "AST", "STL", "BLK", "PF", "PTS", "Total minutes", "PER",
