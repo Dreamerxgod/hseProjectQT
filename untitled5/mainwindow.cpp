@@ -43,7 +43,6 @@ MainWindow::~MainWindow() {
     delete ui;
 }
 
-
 void MainWindow::readCSV(const QString &filename) {
     QFile file(filename);
     if (file.open(QIODevice::ReadOnly)) {
@@ -52,6 +51,30 @@ void MainWindow::readCSV(const QString &filename) {
         while (!in.atEnd()) {
             QString line = in.readLine();
             QStringList fields = line.split(",");
+            player p;
+            p.sal = fields[1].toInt();
+            p.pos = fields[2];
+            p.age = fields[3].toInt();
+            p.team = fields[4];
+            p.gp = fields[5].toInt();
+            p.gs = fields[6].toInt();
+            p.mg = fields[7].toDouble();
+            p.fg = fields[8].toDouble();
+            p.fga = fields[9].toDouble();
+            p.threeP = fields[10].toDouble();
+            p.threePA = fields[11].toDouble();
+            p.twoP = fields[12].toDouble();
+            p.twoPA = fields[13].toDouble();
+            p.orb = fields[14].toDouble();
+            p.drb = fields[15].toDouble();
+            p.ast = fields[16].toDouble();
+            p.stl = fields[17].toDouble();
+            p.blk = fields[18].toDouble();
+            p.pf = fields[19].toDouble();
+            p.pts = fields[20].toDouble();
+            p.tm = fields[21].toInt();
+            p.per = fields[22].toDouble();
+            players[fields[0]].push_back(p);
             tableWidget->insertRow(row);
             for (int col = 0; col < fields.size(); ++col) {
                 tableWidget->setItem(row, col, new QTableWidgetItem(fields[col]));
@@ -85,16 +108,48 @@ void MainWindow::addPlayer() {
 
     int row = tableWidget->rowCount();
     tableWidget->insertRow(row);
+    std::vector<QString> fields;
+    QString name;
     for (int col = 0; col < labels.size(); ++col) {
         QString value = QInputDialog::getText(this, "Add Player", labels[col] + ":");
+        if (col == 0)
+            name = value;
+        else
+            fields.push_back(value);
         tableWidget->setItem(row, col, new QTableWidgetItem(value));
     }
-
+    player p;
+    p.sal = fields[1].toInt();
+    p.pos = fields[2];
+    p.age = fields[3].toInt();
+    p.team = fields[4];
+    p.gp = fields[5].toInt();
+    p.gs = fields[6].toInt();
+    p.mg = fields[7].toDouble();
+    p.fg = fields[8].toDouble();
+    p.fga = fields[9].toDouble();
+    p.threeP = fields[10].toDouble();
+    p.threePA = fields[11].toDouble();
+    p.twoP = fields[12].toDouble();
+    p.twoPA = fields[13].toDouble();
+    p.orb = fields[14].toDouble();
+    p.drb = fields[15].toDouble();
+    p.ast = fields[16].toDouble();
+    p.stl = fields[17].toDouble();
+    p.blk = fields[18].toDouble();
+    p.pf = fields[19].toDouble();
+    p.pts = fields[20].toDouble();
+    p.tm = fields[21].toInt();
+    p.per = fields[22].toDouble();
+    players[name].push_back(p);
+    //qDebug() << name << p.sal << p.pos << p.age << p.team;
     writeCSV("data.csv");
 }
 
 void MainWindow::deletePlayer() {
     int row = tableWidget->currentRow();
+    QTableWidgetItem *firstItem = tableWidget->item(row, 0);
+    players.erase(firstItem->text());
     if (row != -1) {
         tableWidget->removeRow(row);
         writeCSV("data.csv");
