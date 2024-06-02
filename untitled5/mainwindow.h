@@ -27,7 +27,7 @@ private slots:
     void addPlayer();
     void deletePlayer();
     void uploadDataset();
-    void openDataAnalysis();  // Add this line
+    void openDataAnalysis();  
 
 private:
     Ui::MainWindow *ui;
@@ -35,12 +35,12 @@ private:
     QPushButton *addButton;
     QPushButton *deleteButton;
     QPushButton *uploadButton;
-    QPushButton *dataAnalysisButton; // Add this line
+    QPushButton *dataAnalysisButton;
     QToolBar *toolBar;
 
     void readCSV(const QString &filename);
     void writeCSV(const QString &filename);
-    void sortData(int column);  // Add this line
+    void sortData(int column); 
 };
 
 struct player
